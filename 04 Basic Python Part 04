@@ -1,0 +1,317 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<center><div style=\"direction:rtl;font-family:B Lotus, B Nazanin, Tahoma\">Study Vision</div></center>\n",
+    "<img src=\"./output.jpg\" alt=\"Study.vision\" style=\"width: 200px;\"/>\n",
+    "<h1><center><div style=\"direction:rtl;font-family:B Lotus, B Nazanin,     \n",
+    "    Tahoma\">Basic Python - Part 4</div></center></h1>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-1-8fe0278bec63>, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  File \u001b[1;32m\"<ipython-input-1-8fe0278bec63>\"\u001b[1;36m, line \u001b[1;32m1\u001b[0m\n\u001b[1;33m    Basic Python - Part 4\u001b[0m\n\u001b[1;37m          ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "Basic Python - Part 4\n",
+    "Python Classes and Objects\n",
+    "Inheritance\n",
+    "Scope & Module\n",
+    "Python Classes and Objects\n",
+    "Python merupakan object oriented programming language (OOP).\n",
+    "\n",
+    "Hampir semua hal yang ada pada Python merupakan Object yang memiliki properties & method\n",
+    "\n",
+    "Class merupakan sebuah object contructor / blueprint untuk membuat sebuah object.\n",
+    "\n",
+    "Struktur Class pada python\n",
+    "class <class_name>:\n",
+    "  <properties>\n",
+    "  <method>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Class dengan sebuah proprty `x`\n",
+    "\n",
+    "class MyClass:\n",
+    "    x = 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class '__main__.MyClass'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(MyClass)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'x']\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(dir(MyClass))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class MyClass:\n",
+    "    x = 5\n",
+    "    y = 'hello world'\n",
+    "\n",
+    "myObj = MyClass()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "__main__.MyClass"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(myObj)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# akses properties pada object\n",
+    "\n",
+    "print(myObj.x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(960, 720)\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(myObj.y)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import cv2\n",
+    "import numpy as np\n",
+    "\n",
+    "B, G, R = cv2.split(image)\n",
+    "\n",
+    "# Let's create a matrix of zeros \n",
+    "# with dimensions of the image h x w  \n",
+    "height, width, channels = image.shape\n",
+    "zeros = np.zeros([height,width], dtype=\"uint8\") # zeros = np.zeros(image.shape[:2], dtype = \"uint8\")\n",
+    "\n",
+    "\n",
+    "cv2.imshow(\"Red\", cv2.merge([zeros, zeros, R]))\n",
+    "cv2.imshow(\"Green\", cv2.merge([zeros, G, zeros]))\n",
+    "cv2.imshow(\"Blue\", cv2.merge([B, zeros, zeros]))\n",
+    "\n",
+    "cv2.waitKey(0)\n",
+    "cv2.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(960, 720)"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "image.shape[:2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Deskripsi rentang numerik saluran warna\n",
+    "#Pertama-tama, kita harus mencatat bahwa secara default, opencv bekerja dengan saluran warna tipe uint8, dan kita perlu mengubahnya untuk melakukan fungsi berikut:\n",
+    "#Nah, pertama-tama kita perlu menambahkan nilai ke setiap sel array untuk memperkuat gambar, lalu mengganti 255 jika nilai akhirnya melebihi 255. Untuk melakukan ini, kita dapat melakukan salah satu dari dua metode berikut:\n",
+    "#Navigasi array:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ampNumber = 100"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for i in range (0, height):\n",
+    "    for j in range(0, width):\n",
+    "        B[i,j]=min(B[i][j]+ampNumber,255)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cv2.imshow(\"Red\", cv2.merge([zeros, zeros, R]))\n",
+    "cv2.imshow(\"Green\", cv2.merge([zeros, G, zeros]))\n",
+    "cv2.imshow(\"Blue\", cv2.merge([B, zeros, zeros]))\n",
+    "cv2.waitKey(0)\n",
+    "cv2.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Dalam metode ini karena volume sebagian besar gambar yang tinggi\n",
+    "\n",
+    "#Kecepatan gulir rendah.\n",
+    "\n",
+    "#Numpy : Gunakan fungsi perpustakaan\n",
+    "\n",
+    "\n",
+    "B, G, R = cv2.split(image)\n",
+    "B = np.clip(B.astype(np.int)+ampNumber, None, 255)\n",
+    "B = B.astype(np.uint8)\n",
+    "\n",
+    "cv2.imshow(\"Red\", cv2.merge([zeros, zeros, R]))\n",
+    "cv2.imshow(\"Green\", cv2.merge([zeros, G, zeros]))\n",
+    "cv2.imshow(\"Blue\", cv2.merge([B, zeros, zeros]))\n",
+    "cv2.waitKey(0)\n",
+    "cv2.destroyAllWindows()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Dalam metode ini, kita mengubah matriks tipe B terlebih dahulu dan mengembalikannya ke keadaan sebelumnya setelah minimalisasi sehingga opencv tidak mendapatkan kesalahan dari kita. Anda dapat menggunakan metode lain misalnya\n",
+    "\n",
+    "#https://stackoverflow.com/questions/48833374/how-to-get-the-minimum-of-each-matrix-element-with-a-const-number/48833464#48833464\n",
+    "You can view a list of color converisons here, but keep in mind you won't ever use or need many of these\n",
+    "http://docs.opencv.org/trunk/d7/d1b/group__imgproc__misc.html#ga4e0972be5de079fed4e3a10e24ef5ef0\n",
+    "https://docs.opencv.org/master/d7/d1b/group__imgproc__misc.html#ga4e0972be5de079fed4e3a10e24ef5ef0"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
